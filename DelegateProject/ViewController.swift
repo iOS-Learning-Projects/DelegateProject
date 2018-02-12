@@ -9,15 +9,34 @@
 import UIKit
 
 class ViewController: UIViewController {
+    var player = Player()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        self.player.delegate = self
+        player.run()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+}
+
+extension ViewController: RunningPlayerDelegate {
+
+    func startRunning(player: RunningPlayer) {
+        print("Running")
+    }
+
+    func gainSpeed(player: RunningPlayer, withSpeed speed: Float) {
+        print(player.currentSpeed)
+        print("Speed engaging: \(speed)")
+    }
+
+    func stopRunning(player: RunningPlayer) {
+        print("Stop running")
     }
 
 
